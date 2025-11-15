@@ -5,6 +5,9 @@ from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 
 def embbed_process():
+    data = os.listdir('data/')
+    newest_data = sorted(data, reverse = True)[0]
+    df = pd.read_csv(f"data/{newest_data}")
     df['all_text'] = df.apply(
         lambda row: f"Judul: {row['judul']}\n\nIsi: {row['isi']}\n\nSumber: {row['link']}",
         axis=1

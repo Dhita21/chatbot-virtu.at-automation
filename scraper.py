@@ -49,7 +49,7 @@ def save_scrape_result(all_data):
         print("NOTHING UPDATED DATA")
         return False
 
-def scraper_engine(n_data = 10): 
+def scraper_engine(n_data = 100): 
     all_data = []
 
     for page in tqdm(range(0, n_data)):  # ambil 100 halaman pencarian

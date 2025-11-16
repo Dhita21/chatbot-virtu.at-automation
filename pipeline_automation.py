@@ -30,8 +30,7 @@ def run_pipeline():
         folder_path="faiss_store",
         path_in_repo="faiss_store",
         repo_type="space",
-        allow_patterns=["*.faiss", "*.pkl"],
-        overwrite=True
+        allow_patterns=["*.faiss", "*.pkl"]
     )
     
     print(">> Upload complete!")

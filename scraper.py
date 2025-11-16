@@ -28,8 +28,21 @@ def clean_detik_text(text):
     return text
 
 def save_scrape_result(all_data):
-    df = pd.DataFrame(all_data)
-    df.to_csv(f"data/result-{datetime.now()}.csv")
+    try : 
+        df = pd.read_csv("data/result-scrape.csv")
+    except : 
+        df = pd.DataFrame()
+    current_shape = df.shape[0]
+    df2 = pd.DataFrame(all_data)
+    df = pd.concat([df, df2])
+    df = df.drop_duplicates(subset = 'link')
+    after_update_shape = df.shape[0]
+    updated_n_rows = after_update_shape - current_shape
+    if (updated_n_rows) > 0: 
+        print(f"UPDATED DATA {datetime.now()} : {updated_n_rows} ARTIKEL")
+    else : 
+        print("NOTHING UPDATED DATA")
+    df.to_csv(f"data/result-scrape.csv")
 
 def scraper_engine(n_data = 10): 
     all_data = []
@@ -74,7 +87,7 @@ def scraper_engine(n_data = 10):
                 print(f"❌ Error ambil isi dari {link}: {e}")
                 continue
 
-    print(f"\nTotal data terkumpul: {len(all_data)}")
+    print(f"\n SCRAPED DATA TOTAL: {len(all_data)} ARTIKEL")
     save_scrape_result(all_data) 
 
 

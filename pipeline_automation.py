@@ -9,7 +9,7 @@ load_dotenv()
 
 #push to HG 
 HF_TOKEN = os.getenv("HF_TOKEN")  # simpan token di env (ga hardcode)
-REPO_ID = "andikarisky28/scraping-job-rag"  # space kamu
+REPO_ID = "Dhita21/chatbot-virtu.at-automation"  # space kamu
 print(HF_TOKEN)
 def run_pipeline():
     #scrapping 

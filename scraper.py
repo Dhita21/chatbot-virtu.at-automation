@@ -4,6 +4,8 @@ from bs4 import BeautifulSoup as bs
 import re
 import pandas as pd
 from datetime import datetime 
+import os 
+
 def clean_detik_text(text):
     # 1️⃣ Hapus bagian SCROLL / ADVERTISEMENT / Simak Video
     text = re.sub(r'SCROLL TO CONTINUE WITH CONTENT', '', text, flags=re.IGNORECASE)

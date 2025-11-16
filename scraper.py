@@ -38,6 +38,7 @@ def save_scrape_result(all_data):
     df = df.drop_duplicates(subset = 'link')
     after_update_shape = df.shape[0]
     updated_n_rows = after_update_shape - current_shape
+    os.makedirs("data", exist_ok=True)
     if (updated_n_rows) > 0: 
         print(f"UPDATED DATA {datetime.now()} : {updated_n_rows} ARTIKEL")
         df.to_csv(f"data/result-scrape.csv")
